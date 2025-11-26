@@ -10,7 +10,7 @@ import TerminalModal from "../components/TerminalModal";
 import TerminalModalSection from "../components/TerminalModalSection";
 import ScrambleText from "../components/ScrambleText";
 import DatePicker from "../components/DatePicker";
-import DataTable, { Column } from "../components/DataTable";
+import DataTable from "../components/DataTable";
 import TextInput from "../components/TextInput";
 import TextArea from "../components/TextArea";
 import Pill from "../components/Pill";
@@ -24,6 +24,14 @@ import IconButton from "../components/IconButton";
 import IconContentSwitcher, {
   IconContentItem,
 } from "../components/IconContentSwitcher";
+import {
+  securityHexStrings,
+  audits,
+  userData,
+  userColumns,
+  tableHexStrings,
+  User,
+} from "../constant";
 
 export default function ShowcasePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,133 +45,6 @@ export default function ShowcasePage() {
   const [progress1, setProgress1] = useState(45);
   const [progress2, setProgress2] = useState(75);
   const [progress3, setProgress3] = useState(30);
-
-  const hexStrings = [
-    "0M000080  01 04 45 54 68 6A 20 5R  69 6D 65 73 20 30 3V 2F  ../E TIMES 03/",
-    "H0000090  4A 61 6N 2F 32 30 30 39  J0 43 68 61 6E 63 6Z HC  /AN 2009 CHANCEL",
-  ];
-
-  const audits = [
-    {
-      date: "February 2024",
-      company: "Bishopfox",
-      type: "Application Audit (Bishop Fox)",
-      status: "Complete",
-    },
-    {
-      date: "January 2023",
-      company: "Bishopfox",
-      type: "Cloud Pentest (Bishop Fox)",
-      status: "Complete",
-    },
-  ];
-
-  // DataTable sample data
-  interface User {
-    id: number;
-    username: string;
-    email: string;
-    role: string;
-    status: "active" | "inactive" | "pending";
-    lastLogin: string;
-  }
-
-  const userData: User[] = [
-    {
-      id: 1,
-      username: "alice_crypto",
-      email: "alice@example.com",
-      role: "Admin",
-      status: "active",
-      lastLogin: "2024-11-21",
-    },
-    {
-      id: 2,
-      username: "bob_trader",
-      email: "bob@example.com",
-      role: "User",
-      status: "active",
-      lastLogin: "2024-11-20",
-    },
-    {
-      id: 3,
-      username: "charlie_dev",
-      email: "charlie@example.com",
-      role: "Developer",
-      status: "inactive",
-      lastLogin: "2024-11-15",
-    },
-    {
-      id: 4,
-      username: "diana_analyst",
-      email: "diana@example.com",
-      role: "Analyst",
-      status: "active",
-      lastLogin: "2024-11-21",
-    },
-    {
-      id: 5,
-      username: "eve_validator",
-      email: "eve@example.com",
-      role: "Validator",
-      status: "pending",
-      lastLogin: "2024-11-19",
-    },
-  ];
-
-  const userColumns: Column<User>[] = [
-    {
-      key: "username",
-      header: "Username",
-      sortable: true,
-    },
-    {
-      key: "email",
-      header: "Email",
-      sortable: true,
-    },
-    {
-      key: "role",
-      header: "Role",
-      sortable: true,
-      render: (value) => (
-        <span className="px-2 py-1 bg-gray-900 text-gray-300 text-xs border border-gray-800">
-          {value}
-        </span>
-      ),
-    },
-    {
-      key: "status",
-      header: "Status",
-      sortable: true,
-      render: (value) => {
-        const colors = {
-          active: "text-green-500 border-green-500/30 bg-green-500/10",
-          inactive: "text-gray-500 border-gray-500/30 bg-gray-500/10",
-          pending: "text-amber-500 border-amber-500/30 bg-amber-500/10",
-        };
-        return (
-          <span
-            className={`px-2 py-1 text-xs border uppercase ${
-              colors[value as keyof typeof colors]
-            }`}
-          >
-            {value}
-          </span>
-        );
-      },
-    },
-    {
-      key: "lastLogin",
-      header: "Last Login",
-      sortable: true,
-    },
-  ];
-
-  const tableHexStrings = [
-    "0xD4T4  01 04 45 54 68 6A 20 5R  69 6D 65 73 20 30 3V 2F  ../TABLE_DATA/",
-    "0xINF0  4A 61 6E 2F 32 30 30 39  J0 43 68 61 6E 63 6Z HC  /USERS_LIST_01",
-  ];
 
   // Generate static data for pagination (no random to avoid hydration issues)
   const paginationData: User[] = Array.from({ length: 25 }, (_, i) => {
@@ -184,7 +65,7 @@ export default function ShowcasePage() {
   });
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-12">
@@ -200,7 +81,7 @@ export default function ShowcasePage() {
             <p className="font-mono text-sm text-gray-400 mb-4">
               Displays hex code strings in terminal/code aesthetic
             </p>
-            <HexDisplay strings={hexStrings} />
+            <HexDisplay strings={securityHexStrings} />
           </div>
         </Section>
 

@@ -30,12 +30,18 @@ export default function Navigation() {
               ))}
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-4">
-            <a href="#" className="font-mono text-sm hover:text-gray-400 transition-colors">
+            <a
+              href="#"
+              className="font-mono text-sm hover:text-gray-400 transition-colors"
+            >
               Login
             </a>
-            <a href="#" className="font-mono text-sm hover:text-gray-400 transition-colors">
+            <a
+              href="#"
+              className="font-mono text-sm hover:text-gray-400 transition-colors"
+            >
               Request Access
             </a>
             <button
@@ -46,7 +52,7 @@ export default function Navigation() {
             </button>
           </div>
         </div>
-        
+
         {menuOpen && (
           <div className="md:hidden py-4 border-t border-gray-900">
             {navItems.map((item) => (
@@ -65,4 +71,3 @@ export default function Navigation() {
     </nav>
   );
 }
-

@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "UI Showcase - Unit 410 Style",
@@ -22,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${ibmPlexMono.variable} bg-black text-white antialiased`}
+        className={`${GeistMono.variable} bg-gray-900 text-white antialiased`}
       >
         {children}
       </body>

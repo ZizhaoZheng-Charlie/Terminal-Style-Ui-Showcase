@@ -22,3 +22,5 @@ export default function BlogPost({ date, title, isPopular = false }: BlogPostPro
   );
 }
 
+
+

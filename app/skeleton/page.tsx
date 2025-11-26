@@ -95,7 +95,7 @@ export default function SkeletonPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-12">

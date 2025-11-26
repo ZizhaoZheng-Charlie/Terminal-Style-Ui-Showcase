@@ -13,4 +13,3 @@ export default function HexDisplay({ strings }: HexDisplayProps) {
     </div>
   );
 }
-

@@ -8,7 +8,11 @@ interface SectionProps {
   defaultExpanded?: boolean;
 }
 
-export default function Section({ title, children, defaultExpanded = true }: SectionProps) {
+export default function Section({
+  title,
+  children,
+  defaultExpanded = true,
+}: SectionProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
   return (
@@ -23,13 +27,8 @@ export default function Section({ title, children, defaultExpanded = true }: Sec
           {isExpanded ? "[-]" : "[+]"}
         </span>
       </button>
-      
-      {isExpanded && (
-        <div className="ml-6">
-          {children}
-        </div>
-      )}
+
+      {isExpanded && <div className="ml-6">{children}</div>}
     </section>
   );
 }
-

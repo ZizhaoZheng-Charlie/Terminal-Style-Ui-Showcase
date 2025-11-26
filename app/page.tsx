@@ -2,83 +2,173 @@ import Navigation from "./components/Navigation";
 import HexDisplay from "./components/HexDisplay";
 import Section from "./components/Section";
 import Footer from "./components/Footer";
+import Button from "./components/Button";
+import {
+  hexStrings,
+  coreComponents,
+  formComponents,
+  displayComponents,
+  interactiveComponents,
+  specializedComponents,
+} from "./constant";
 
 export default function Home() {
-  const hexStrings = [
-    "F5RL3UNT 09 0C 4D 5C 70 6D 6D 28 72 75 75 6B 28 38 3B 37 xcvMNOPQP?QRRK8!",
-    "VVPW5CZZ D2 1E 34 6F 92 B8 0C 47 5D 9A 21 F3 76 4C 50 81 RIV42001(OLILKT.",
-    "FLDPC2EN D2 1E 34 6F 92 B8 0C 47 5D 9A 21 F3 76 4C 50 81 ../.;£íýz{.zÇ,\\>X",
-    "3TSBP6KR 9B 5C 72 3D 84 A1 1F E8 42 67 9E 0B 14 6D F5 39 gv.a.È.ÃˆŠQ2:Ÿcv",
-    "VXLNFPDY 4A 8D 2B 0E 57 C4 A8 6F 93 B1 D7 5E 1A 7C 2F 4B K.^J)«\\_Iÿÿ\\*G¬+|\\=",
-    "8ZIAH00D 1C F9 63 4B 2A E7 0D 95 68 3E B2 D1 74 5F 9D 20 VS(HIVMS\\=.).X//s",
-  ];
-
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col">
+    <main className="min-h-screen bg-background text-white flex flex-col">
       <Navigation />
 
-      <div className="container mx-auto px-4 py-8 flex-1">
+      <div className="container mx-auto px-4 py-8 flex-1 flex flex-col items-center">
         {/* Hero Section */}
-        <section className="mb-16">
-          <HexDisplay strings={hexStrings} />
+        <section className="mb-16 w-full max-w-4xl text-center">
+          <div className="flex justify-center">
+            <HexDisplay strings={hexStrings} />
+          </div>
           <div className="mt-8">
             <h1 className="text-4xl md:text-6xl font-mono mb-4">#</h1>
             <h2 className="text-3xl md:text-5xl font-mono mb-6">
-              Cold Storage & Staking
+              Terminal-Style UI Showcase
             </h2>
-            <p className="text-xl md:text-2xl font-mono mb-4">
-              For Institutions
+            <p className="text-lg md:text-xl font-mono text-gray-400 max-w-3xl mx-auto leading-relaxed mb-6">
+              A comprehensive collection of terminal-inspired UI components
+              built with a dark, monospace aesthetic.
             </p>
-            <p className="text-lg md:text-xl font-mono text-gray-400 max-w-3xl leading-relaxed">
-              We empower leading crypto pioneers to secure their digital assets.
+            <p className="text-base md:text-lg font-mono text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8">
+              This showcase demonstrates a complete set of UI components styled
+              after Unit 410's design aesthetic. Each component maintains the
+              distinctive look and feel of a command-line interface while
+              providing modern, interactive functionality.
             </p>
-            <p className="text-base md:text-lg font-mono text-gray-500 mt-6 max-w-4xl leading-relaxed">
-              Institutions and other large holders use our state-of-the-art
-              self-custody wallets to secure and stake digital assets at the
-              largest scale. Our full service technical support helps clients
-              manage risk, research, reporting, and the unique challenges of
-              operating securely at scale.
-            </p>
-            <p className="text-sm md:text-base font-mono text-gray-600 mt-4">
-              Unit 410 is named after the apartment where{" "}
-              <span className="text-white">Coinbase</span> was founded.
-            </p>
+            <div className="flex gap-4 flex-wrap justify-center">
+              <a href="/showcase">
+                <Button>View All Components</Button>
+              </a>
+              <a href="/skeleton">
+                <Button>View Skeleton Examples</Button>
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <Section title="Services" defaultExpanded={false}>
-          <div className="space-y-6">
-            <div className="border-l-2 border-gray-800 pl-4">
-              <h3 className="text-xl font-mono mb-2">
-                ├─ wallets & self-custody
-              </h3>
-              <p className="text-gray-400 font-mono">
-                Unit 410 has the most mature institutional self-custody offering
-                for cold storage, currently supporting 300+ digital assets.
-              </p>
-              <span className="text-gray-600 font-mono text-sm">[+]</span>
+        {/* Core Components Section */}
+        <div className="w-full max-w-4xl">
+          <Section title="Core Components" defaultExpanded={true}>
+            <div className="space-y-4">
+              {coreComponents.map((component, index) => (
+                <div key={index} className="border-l-2 border-gray-800 pl-4">
+                  <h3 className="text-lg font-mono mb-1">
+                    ├─ {component.name}
+                  </h3>
+                  <p className="text-gray-400 font-mono text-sm">
+                    {component.description}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div className="border-l-2 border-gray-800 pl-4">
-              <h3 className="text-xl font-mono mb-2">
-                ├─ staking & Participation
-              </h3>
-              <p className="text-gray-400 font-mono">
-                Unit 410 provides the industry's most mature staking and
-                participation capabilities, currently supporting 20+ networks.
-              </p>
-              <span className="text-gray-600 font-mono text-sm">[+]</span>
+          </Section>
+        </div>
+
+        {/* Form Components Section */}
+        <div className="w-full max-w-4xl">
+          <Section title="Form Components" defaultExpanded={false}>
+            <div className="space-y-4">
+              {formComponents.map((component, index) => (
+                <div key={index} className="border-l-2 border-gray-800 pl-4">
+                  <h3 className="text-lg font-mono mb-1">
+                    ├─ {component.name}
+                  </h3>
+                  <p className="text-gray-400 font-mono text-sm">
+                    {component.description}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div className="border-l-2 border-gray-800 pl-4">
-              <h3 className="text-xl font-mono mb-2">├─ reporting & Audit</h3>
-              <p className="text-gray-400 font-mono">
-                Unit 410 provides industry leading reporting and audit support
-                for RIAs and public companies to meet their obligations.
-              </p>
-              <span className="text-gray-600 font-mono text-sm">[+]</span>
+          </Section>
+        </div>
+
+        {/* Display Components Section */}
+        <div className="w-full max-w-4xl">
+          <Section title="Display Components" defaultExpanded={false}>
+            <div className="space-y-4">
+              {displayComponents.map((component, index) => (
+                <div key={index} className="border-l-2 border-gray-800 pl-4">
+                  <h3 className="text-lg font-mono mb-1">
+                    ├─ {component.name}
+                  </h3>
+                  <p className="text-gray-400 font-mono text-sm">
+                    {component.description}
+                  </p>
+                </div>
+              ))}
             </div>
-          </div>
-        </Section>
+          </Section>
+        </div>
+
+        {/* Interactive Components Section */}
+        <div className="w-full max-w-4xl">
+          <Section title="Interactive Components" defaultExpanded={false}>
+            <div className="space-y-4">
+              {interactiveComponents.map((component, index) => (
+                <div key={index} className="border-l-2 border-gray-800 pl-4">
+                  <h3 className="text-lg font-mono mb-1">
+                    ├─ {component.name}
+                  </h3>
+                  <p className="text-gray-400 font-mono text-sm">
+                    {component.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Section>
+        </div>
+
+        {/* Specialized Components Section */}
+        <div className="w-full max-w-4xl">
+          <Section title="Specialized Components" defaultExpanded={false}>
+            <div className="space-y-4">
+              {specializedComponents.map((component, index) => (
+                <div key={index} className="border-l-2 border-gray-800 pl-4">
+                  <h3 className="text-lg font-mono mb-1">
+                    ├─ {component.name}
+                  </h3>
+                  <p className="text-gray-400 font-mono text-sm">
+                    {component.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Section>
+        </div>
+
+        {/* Documentation Section */}
+        <div className="w-full max-w-4xl">
+          <Section title="Documentation" defaultExpanded={false}>
+            <div className="space-y-4">
+              <div className="border-l-2 border-gray-800 pl-4">
+                <h3 className="text-lg font-mono mb-2">├─ Component Guide</h3>
+                <p className="text-gray-400 font-mono text-sm mb-4">
+                  Detailed documentation for all components including props,
+                  usage examples, and features.
+                </p>
+                <p className="text-gray-500 font-mono text-xs">
+                  See COMPONENTS.md for complete API documentation
+                </p>
+              </div>
+              <div className="border-l-2 border-gray-800 pl-4">
+                <h3 className="text-lg font-mono mb-2">├─ Design System</h3>
+                <p className="text-gray-400 font-mono text-sm mb-2">
+                  Design principles and guidelines:
+                </p>
+                <ul className="text-gray-500 font-mono text-xs space-y-1 ml-4">
+                  <li>• Dark theme with black background</li>
+                  <li>• Monospace typography throughout</li>
+                  <li>• Minimal, clean interface</li>
+                  <li>• Tree-like navigation indicators</li>
+                  <li>• Hex code displays and cryptographic elements</li>
+                </ul>
+              </div>
+            </div>
+          </Section>
+        </div>
       </div>
       <Footer />
     </main>

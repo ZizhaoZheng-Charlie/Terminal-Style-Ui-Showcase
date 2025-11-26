@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  transpilePackages: ['geist'],
+};
 
 export default nextConfig;
-
